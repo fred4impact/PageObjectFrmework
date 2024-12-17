@@ -138,7 +138,8 @@ public class WebUtils {
     public String takeScreenshot(String path) {
         TakesScreenshot screenshot = (TakesScreenshot) driver;
         File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
-        File destFile = new File(path);
+        File destFile = new File("/Users/sam/Documents/PageObjectModel/");
+
         srcFile.renameTo(destFile);
         return destFile.getAbsolutePath();
     }
