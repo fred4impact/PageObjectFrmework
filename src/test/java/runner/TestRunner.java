@@ -10,6 +10,7 @@ import io.cucumber.testng.CucumberOptions;
         features = "src/test/resources/features",
         glue = "stepDefinitions",
         plugin = {"pretty", "html:target/cucumber-reports.html"},
+        tags = "@regressionTest, @Critical",
         monochrome = true
 )
 
