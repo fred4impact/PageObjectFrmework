@@ -5,7 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 import pageObjects.*;
-import sauceBaseDriver.DriverFactory;
+import sauceDriver.DriverFactory;
 import utils.ConfigReader;
 
 public class EndToEndSteps {

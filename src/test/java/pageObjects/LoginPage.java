@@ -28,4 +28,8 @@ public class LoginPage extends BasePage {
         password.sendKeys(pass);
         loginButton.click();
     }
+
+//    public boolean isConfirmationMessageDisplayed() {
+//        return isElementDisplayed(confirmationMessage);
+//    }
 }
