@@ -13,10 +13,9 @@ public class BaseDriver {
 
     private static WebDriver driver;
 
-    public static WebDriver getDriver() {
+    public static WebDriver getDriver(String browser) {
         if (driver == null) {
-            String browser = ConfigReader.getProperty("browser").toLowerCase();
-            switch (browser) {
+            switch (browser.trim().toLowerCase()) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
@@ -29,7 +28,6 @@ public class BaseDriver {
                     WebDriverManager.safaridriver().setup();
                     driver = new SafariDriver();
                     break;
-
                 default:
                     throw new IllegalArgumentException("Unsupported browser: " + browser);
             }
