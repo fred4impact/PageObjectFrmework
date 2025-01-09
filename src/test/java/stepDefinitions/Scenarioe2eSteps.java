@@ -1,9 +1,12 @@
 package stepDefinitions;
 
 import baseDriver.BaseDriver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import pageObjects.*;
 import utils.ConfigReader;
 
@@ -29,5 +32,36 @@ public class Scenarioe2eSteps {
     @When("user logs in with {string} and {string}")
     public void userLogsIn(String username, String password) {
         loginPage.login(username, password);
+    }
+
+
+    @Then("user should see the inventory page")
+    public void userShouldSeeInventoryPage() {
+        Assert.assertTrue(inventoryPage.isPageDisplayed());
+    }
+
+    @When("user adds item {string} to the cart")
+    public void userAddsItemToCart(String itemName) {
+        inventoryPage.addItemToCart(itemName);
+    }
+
+    @Then("user proceeds to checkout")
+    public void userProceedsToCheckout() {
+        cartPage.proceedToCheckout();
+    }
+
+    @And("user enters shipping details {string}, {string}, {string}")
+    public void userEntersShippingDetails(String firstName, String lastName, String zipCode) {
+        checkoutPage.enterShippingDetails(firstName, lastName, zipCode);
+    }
+
+    @Then("user should see the confirmation page")
+    public void userShouldSeeConfirmationPage() {
+        Assert.assertTrue(confirmationPage.isConfirmationDisplayed());
+    }
+
+    @When("user completes the purchase")
+    public void userCompletesPurchase() {
+        checkoutPage.completePurchase();
     }
 }
