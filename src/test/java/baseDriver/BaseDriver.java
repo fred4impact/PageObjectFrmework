@@ -1,14 +1,15 @@
-package sauceDriver;
+package baseDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import utils.ConfigReader;
 
 import java.time.Duration;
 
-public class DriverFactory {
+public class BaseDriver {
 
     private static WebDriver driver;
 
@@ -24,6 +25,11 @@ public class DriverFactory {
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
                     break;
+                case "safari":
+                    WebDriverManager.safaridriver().setup();
+                    driver = new SafariDriver();
+                    break;
+
                 default:
                     throw new IllegalArgumentException("Unsupported browser: " + browser);
             }

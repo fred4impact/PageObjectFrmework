@@ -5,25 +5,26 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 import pageObjects.*;
-import sauceDriver.DriverFactory;
+import baseDriver.BaseDriver;
 import utils.ConfigReader;
 
 public class EndToEndSteps {
+    // create a variable of very pages and create a new object of it
+    // page interactivity / seperation , encasulation / inheritanc
 
+    LoginPage loginPage = new LoginPage(BaseDriver.getDriver());
+    InventoryPage inventoryPage = new InventoryPage(BaseDriver.getDriver());
+    CartPage cartPage = new CartPage(BaseDriver.getDriver());
+    CheckoutPage checkoutPage = new CheckoutPage(BaseDriver.getDriver());
+    ConfirmationPage confirmationPage = new ConfirmationPage(BaseDriver.getDriver());
 
-    LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
-    InventoryPage inventoryPage = new InventoryPage(DriverFactory.getDriver());
-    CartPage cartPage = new CartPage(DriverFactory.getDriver());
-    CheckoutPage checkoutPage = new CheckoutPage(DriverFactory.getDriver());
-    ConfirmationPage confirmationPage = new ConfirmationPage(DriverFactory.getDriver());
-
-    @Given("^user is on the login page$")
+    @Given("user is on the login page")
     public void userIsOnTheLoginPage() {
         String url = ConfigReader.getProperty("url");
-        DriverFactory.getDriver().get(url);
+        BaseDriver.getDriver().get(url);
     }
 
-    @When("^user logs in with \"(.*)\" and \"(.*)\"$")
+    @When("user logs in with (.*)\" and \"(.*)\"$")
     public void userLogsIn(String username, String password) {
         loginPage.login(username, password);
     }
@@ -48,14 +49,14 @@ public class EndToEndSteps {
         checkoutPage.enterShippingDetails(firstName, lastName, zipCode);
     }
 
+    @Then("^user should see the confirmation page$")
+    public void userShouldSeeConfirmationPage() {
+        Assert.assertTrue(confirmationPage.isConfirmationDisplayed());
+    }
     @When("^user completes the purchase$")
     public void userCompletesPurchase() {
         checkoutPage.completePurchase();
     }
 
-    @Then("^user should see the confirmation page$")
-    public void userShouldSeeConfirmationPage() {
-        Assert.assertTrue(confirmationPage.isConfirmationDisplayed());
-    }
 }
 

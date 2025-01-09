@@ -4,7 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
-import pageObjects.Login;
+import pageObjects.LoginPage;
 import utils.ConfigReader;
 import utils.DriverFactory;
 
@@ -14,7 +14,7 @@ public class LoginSteps {
 
 
 
-    private Login login = new Login(driver);  // instantiat the login page
+    private LoginPage loginPage = new LoginPage(driver);  // instantiat the login page
 
     @Given("the user is on the login page")
     public void navigateToLoginPage() {
@@ -30,7 +30,7 @@ public class LoginSteps {
 
     @When("the user enters valid credentials {string} and {string}")
     public void enterCredentials(String username, String password) {
-        login.login(username, password);
+        loginPage.login(username, password);
     }
 
     @Then("the user is redirected to the products page")

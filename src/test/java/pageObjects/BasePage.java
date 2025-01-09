@@ -1,5 +1,6 @@
 package pageObjects;
 
+import baseDriver.BaseDriver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
@@ -10,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.time.Duration;
 
-public class BasePage {
+public class BasePage extends BaseDriver {
 
     protected WebDriver driver;
     private WebDriverWait wait;
@@ -35,6 +36,7 @@ public class BasePage {
         element.clear();
         element.sendKeys(text);
     }
+
 
     protected String getText(WebElement element) {
         waitForVisibility(element);

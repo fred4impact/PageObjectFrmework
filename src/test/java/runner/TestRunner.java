@@ -8,7 +8,7 @@ import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
 
-        features = "src/test/resources/features",
+        features = "src/test/resources/features/E2ETest.feature",
         glue = {"stepDefinitions", "hooks"},
         tags = "@EndToEnd",
         plugin = {"pretty", "html:target/cucumber-reports.html", "json:target/cucumber.json"},
