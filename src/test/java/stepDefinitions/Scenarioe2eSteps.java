@@ -24,7 +24,7 @@ public class Scenarioe2eSteps {
     ConfirmationPage confirmationPage = new ConfirmationPage(driver);
 
     @Given("user is on the login page")
-    public void user_Is_On_The_LoginPage() {
+    public void userIsOnTheLoginPage() {
         String url = ConfigReader.getProperty("base.url");
         driver.get(url);
     }
@@ -33,7 +33,6 @@ public class Scenarioe2eSteps {
     public void userLogsIn(String username, String password) {
         loginPage.login(username, password);
     }
-
 
     @Then("user should see the inventory page")
     public void userShouldSeeInventoryPage() {

@@ -14,5 +14,4 @@ Feature: SauceDemo End-to-End Test
     Examples:
       | username      | password     | itemName            | firstName | lastName | zipCode |
       | standard_user | secret_sauce | Sauce Labs Backpack | John      | Doe      | 12345   |
-      |               |              |                     |           |          |         |
 
