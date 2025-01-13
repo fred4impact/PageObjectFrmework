@@ -6,6 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 
 import java.io.File;
@@ -193,6 +194,39 @@ public class BasePage extends BaseDriver {
         click(By.id("react-burger-menu-btn")); // Open menu
         click(By.id("logout_sidebar_link"));  // Click logout
     }
+
+    /**
+     * Asserts that two strings are equal.
+     *
+     * @param actual   The actual string value.
+     * @param expected The expected string value.
+     * @param message  The message to display if the assertion fails.
+     */
+    protected static void assertEquals(String actual, String expected, String message) {
+        Assert.assertEquals(actual, expected, message);
+    }
+
+    /**
+     * Asserts that two integers are equal.
+     *
+     * @param actual   The actual integer value.
+     * @param expected The expected integer value.
+     * @param message  The message to display if the assertion fails.
+     */
+    protected static void assertEquals(int actual, int expected, String message) {
+        Assert.assertEquals(actual, expected, message);
+    }
+
+    /**
+     * Asserts that a condition is true.
+     *
+     * @param condition The condition to evaluate.
+     * @param message   The message to display if the assertion fails.
+     */
+    protected static void assertTrue(boolean condition, String message) {
+        Assert.assertTrue(condition, message);
+    }
+
 
 
 

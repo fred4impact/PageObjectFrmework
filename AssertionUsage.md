@@ -2,29 +2,30 @@
 mvn test -Dbrowser=firefox
 
 
-examples Assertion and how to use it in your tests like stepdeinations
 
+# Example Usage of Assertion utilities
+  how to use it in your tests
 
-Example Usage
-
-1 Asserting String Equality
-
+## 1 Asserting String Equality
+```
 AssertionsUtil.assertEquals(actualTitle, "Expected Title", "Page title is not as expected");
 
+```
 
-2 Asserting Count of Products
-
+##  Asserting Count of Products
+```
 int actualCount = driver.findElements(By.className("inventory_item")).size();
 AssertionsUtil.assertEquals(actualCount, expectedCount, "Number of products displayed is incorrect");
+```
 
-
-3 Asserting Product Name in Cart
-
+##  Asserting Product Name in Cart
+```
 String productName = "Sauce Labs Backpack";
 AssertionsUtil.assertStringContains(cartText, productName, "Product is not added to the cart");
+```
 
-
-4 Validating Non-Null Elements
-
+##  Validating Non-Null Elements
+```
 WebElement element = driver.findElement(By.id("inventory_container"));
 AssertionsUtil.assertNotNull(element, "Inventory container is not displayed");
+```
